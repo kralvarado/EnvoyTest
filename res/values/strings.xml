@@ -2,6 +2,14 @@
 <resources>
 
     <string name="app_name">Envoy Note</string>
+    <string name="IDS_ADD_BUTTON_TEXT">Add New Note</string>
+    <string name="IDS_NEW_LIST">New List</string>
+    <string name="IDS_RENAME_LIST">Rename List</string>
+    <string name="IDS_DELETE_LIST">Delete List</string>
+    <string name="IDS_HELP">Help</string>
+    <string name="IDS_ADD_NEW_NOTE">Add New Note</string>
     <string name="hello_world">Hello world!</string>
+    <string name="action_settings">actions</string>
+    <string name="action_search">search</string>
 
 </resources>
