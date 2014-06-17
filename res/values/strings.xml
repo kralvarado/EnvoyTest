@@ -8,6 +8,7 @@
     <string name="IDS_DELETE_LIST">Delete List</string>
     <string name="IDS_HELP">Help</string>
     <string name="IDS_ADD_NEW_NOTE">Add New Note</string>
+    <string name="IDS_SAVE_CHANGES">Save Changes</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">actions</string>
     <string name="action_search">search</string>

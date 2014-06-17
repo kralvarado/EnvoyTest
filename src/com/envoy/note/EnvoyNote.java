@@ -35,6 +35,9 @@ public class EnvoyNote extends Activity
             noteListFragment = new NoteListFragment( td.data.getList( 0 ));
             noteViewFragment = new NoteViewFragment();
             
+            noteListFragment.setNoteViewFragment( noteViewFragment );
+            noteViewFragment.setNoteListFragment( noteListFragment );
+            
             FragmentTransaction ft = fragmentManger.beginTransaction(); 
             ft.add( R.id.ListView, noteListFragment, FRAGMENT_NOTELIST_NAME );
             ft.add( R.id.NoteView, noteViewFragment, FRAGMENT_NOTEVIEW_NAME );
