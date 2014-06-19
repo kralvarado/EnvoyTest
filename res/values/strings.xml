@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Envoy Note</string>
     <string name="IDS_ADD_BUTTON_TEXT">Add New Note</string>
     <string name="IDS_NEW_LIST">New List</string>
@@ -9,8 +8,23 @@
     <string name="IDS_HELP">Help</string>
     <string name="IDS_ADD_NEW_NOTE">Add New Note</string>
     <string name="IDS_SAVE_CHANGES">Save Changes</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">actions</string>
-    <string name="action_search">search</string>
-
+    <string name="IDS_CREATE_NEW_LIST">Create New List</string>
+    <string name="IDS_ENTER_LIST_NAME">Enter List Name</string>
+    <string name="IDS_ENTER_NEW_LIST_NAME">Enter List\'s New Name</string>
+    <string name="IDS_THIS_CANNOT_BE_UNDONE">This Cannot Be Undone!</string>
+    <string name="IDS_EDIT_NOTE">Edit Note:</string>
+    <string name="IDS_INVALID_NAME">Name cannot be empty.</string>
+    <string name="IDS_CANNOT_CONTAIN_SPACES">Name cannot have spaces.</string>
+    <string name="IDS_INVALID_NOTE">Note cannot be empty.</string>
+    <string name="IDS_OK">OK</string>
+    <string name="IDS_CANCEL">Cancel</string>
+    <string name="IDS_DELETE_NOTE">Delete Note?</string>
+    <string name="IDS_DELETE">Delete</string>
+    <string name="IDS_COLON">:</string>
+    <string name="IDS_SPACE">\u0020</string>
+    <string name="IDS_QUOTE">\"</string>
+    <string name="IDS_QUESTIONMARK">\?</string>
+    <string name="IDS_SHOW_ALL">Show All</string>
+    <string name="IDS_EDIT_MODE">Edit Mode</string>
+    <string name="IDS_NEW_NOTE_TEXT">New note text</string>
 </resources>

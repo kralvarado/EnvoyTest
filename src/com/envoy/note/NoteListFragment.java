@@ -16,16 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-import com.envoy.note.data.NoteCollection;
-import com.envoy.note.data.TextNote;
+import com.envoy.note.data.ListItem;
+import com.envoy.note.data.NoteItem;
+import com.envoy.note.network.AWSConnection;
 
 
-
+/**
+* NoteListFragment is the left side panel, used to show each NoteItem
+* selecting an item will notify NoteViewFragment to display the note's content
+* A long-press will delete the pressed note
+*/
 public class NoteListFragment extends ListFragment implements OnClickListener, OnItemLongClickListener
 {
-    private NoteCollection noteList;
-    private ArrayList<TextNote> noteArrayList;
-    private NoteListItemAdapter noteListItemAdapter;
+    private ListItem noteList;
+    private ArrayList<NoteItem> noteArrayList;      // used to hold Notes, separate from noteList (data-model)
+    private NoteItemAdapter noteListItemAdapter;
     private FrameLayout buttonLayout;
     private Button addButton;
     private int currentPosition;
@@ -34,9 +39,11 @@ public class NoteListFragment extends ListFragment implements OnClickListener, O
     
     
     
-    public NoteListFragment( NoteCollection notes ) {
-        noteList = notes;
-        noteArrayList = noteList.getArrayList();
+    public NoteListFragment() {
+        noteList = null;
+        // Initialize to a single 'empty' list
+        noteArrayList = new ArrayList<NoteItem>();
+        noteArrayList.add( new NoteItem( NoteItem.NO_ID, "empty" ));
         addButton = null;
         currentPosition = -1;
     }
@@ -45,8 +52,25 @@ public class NoteListFragment extends ListFragment implements OnClickListener, O
     
     public void setNoteViewFragment( NoteViewFragment nvf ) {
         noteViewFragment = nvf;
-        noteViewFragment.setNoteData( noteArrayList.get( 0 ));
+        if ( noteArrayList != null ) {
+            noteViewFragment.setNoteData( noteArrayList.get( 0 ));
+        }
         currentPosition = 0;
+    }
+    
+    
+    
+    public void setNoteCollection( ListItem notes ) {
+        noteList = notes;
+        noteArrayList = noteList.getArrayList();
+        if ( noteArrayList.size() > 0 ) {
+            noteViewFragment.setNoteData( noteArrayList.get( 0 ));
+            currentPosition = 0;
+            noteListItemAdapter.clear();
+            noteListItemAdapter.addAll( noteArrayList );
+            updateView( 0 );
+        }
+        addButton.setEnabled( true );
     }
     
     
@@ -54,15 +78,21 @@ public class NoteListFragment extends ListFragment implements OnClickListener, O
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rView = null;
-        
-        noteListItemAdapter = new NoteListItemAdapter( inflater.getContext(), R.layout.note_list_item_layout, noteArrayList );
+
+        noteListItemAdapter = new NoteItemAdapter( 
+            inflater.getContext(), 
+            R.layout.note_list_item_layout, 
+            noteArrayList
+        );
         setListAdapter( noteListItemAdapter );
         rView = super.onCreateView( inflater, container, savedInstanceState );
-        //rView = inflater.inflate( R.layout.notelist_fragment_layout, null);
         
         buttonLayout = (FrameLayout)inflater.inflate( R.layout.add_note_button, null);
         addButton = (Button) buttonLayout.findViewById( R.id.AddNoteButton );
         addButton.setOnClickListener( this );
+        if ( noteList == null ) {
+            addButton.setEnabled( false );
+        }
         
         return rView;
     }
@@ -91,8 +121,12 @@ public class NoteListFragment extends ListFragment implements OnClickListener, O
     
     // Remove Note from data
     public boolean onItemLongClick( AdapterView<?> parent, View view, int position, long id ) {
+        NoteItem t_note = noteArrayList.get( position );
+        int t_noteID = t_note.getID();
         noteList.removeNote( position );
         noteArrayList.remove( position );
+        //AWSConnection.getInstance().deleteNote( t_noteID );
+        noteListItemAdapter.remove( t_note );
         
         // check if deleting current
         int updatePos = position;
@@ -112,10 +146,13 @@ public class NoteListFragment extends ListFragment implements OnClickListener, O
     
     public void onClick( View v ) {
         if ( v == addButton ) {
-            TextNote tn = new TextNote( "new" );    // TODO:use string reference for localization
+            NoteItem tn = new NoteItem( NoteItem.NO_ID, getResources().getString( R.string.IDS_NEW_NOTE_TEXT ));
             noteList.addNote( tn );
             noteArrayList.add( tn );
+            noteListItemAdapter.add( tn );
             updateView( noteList.getCount() -1 );
+            
+            //AWSConnection.getInstance().createNote( noteList.getID(), tn.getText() );
         }
     }
     

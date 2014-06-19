@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="separator">#AAAAAA</color>
-    
+    <color name="GRAY">#AAAAAA</color>
+    <color name="LIGHT_GRAY">#CCCCCC</color>
+    <color name="DARK_BLUE_GRAY">#446688</color>
 </resources>

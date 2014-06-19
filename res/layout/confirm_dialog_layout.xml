@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/DialogWarningText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/Button_OK"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignLeft="@+id/DialogWarningText"
+        android:layout_below="@+id/DialogWarningText"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/Button_Cancel"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignBaseline="@+id/Button_OK"
+        android:layout_alignBottom="@+id/Button_OK"
+        android:layout_alignRight="@+id/DialogWarningText"
+        android:text="Button" />
+
+</RelativeLayout>

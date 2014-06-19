@@ -11,17 +11,10 @@
         android:layout_centerHorizontal="true"
         android:text="@string/IDS_ADD_BUTTON_TEXT" />
     
-    <!-- ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" -->
-
         <ListView
             android:id="@+id/android:list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </ListView>
 
-    <!-- /ScrollView-->
 </RelativeLayout>

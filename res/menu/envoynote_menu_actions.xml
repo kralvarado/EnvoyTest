@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- Search, should appear as action button -->
-    <item android:id="@+id/action_search"
-          android:icon="@drawable/ic_action_search"
-          android:title="@string/action_search"
-          android:showAsAction="ifRoom" />
+    <item android:id="@+id/ActionSpinner" 
+        android:showAsAction="always"
+        android:title="Spinner"
+        android:actionViewClass="android.widget.Spinner"
+        />
+    <item android:id="@+id/Action_ShowAll"
+          android:showAsAction="always"
+          android:title="Toggle"
+          android:actionViewClass="android.widget.ToggleButton"
+           />
     <!-- Settings, should always be in the overflow -->
     <item 
         android:id="@+id/Action_NewList"
@@ -18,8 +23,8 @@
         android:id="@+id/Action_DeleteList"
         android:title="@string/IDS_DELETE_LIST"
         android:showAsAction="never" />
-    <item 
-        android:id="@+id/Action_Help"
-        android:title="@string/IDS_HELP"
+    <item
+        android:id="@+id/TEMP_START"
+        android:title="-Start-"
         android:showAsAction="never" />
 </menu>
